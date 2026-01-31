@@ -1,12 +1,26 @@
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CurrencyPipe, DatePipe],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('pipes-angular');
+  protected readonly author = signal<string>('');
+  protected readonly amount = signal<number>(0);
+  protected readonly date = signal<string>('');
+
+  onchangeAuthor(value: string) {
+    this.author.set(value);
+  }
+
+  onchangeAmount(value: string) {
+    this.amount.set(parseFloat(value) || 0);
+  }
+
+  onchangeDate(value: string) {
+    this.date.set(value);
+  }
 }
