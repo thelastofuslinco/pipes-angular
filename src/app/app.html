@@ -28,6 +28,15 @@
       type="date"
       class="border p-2 mb-4 w-full"
     />
+
+    <label for="distance">Distance (km):</label>
+    <input
+      (change)="onchangeDistance($event.target.value)"
+      id="distance"
+      type="text"
+      placeholder="Enter distance in km"
+      class="border p-2 mb-4 w-full"
+    />
   </div>
 
   <aside>
@@ -36,8 +45,9 @@
     >
       <h2 class="text-xl font-bold mb-4">Payment Summary</h2>
       <p><strong>Receiver:</strong> {{ author() }}</p>
-      <p><strong>Amount:</strong> {{ amount() | currency: 'BRL' : 'symbol' : '1.2-2' }}</p>
-      <p><strong>Payment Date:</strong> {{ date() | date: 'LLLL h:mm a' : 'UTC-3' }}</p>
+      <p><strong>Amount:</strong> {{ amount() | currency: 'USD' : 'symbol' : '1.2-2' }}</p>
+      <p><strong>Payment Date:</strong> {{ date() | date: 'longDate' }}</p>
+      <p><strong>Convert (miles):</strong> {{ distance() | convert: 'km-to-miles' }}</p>
     </div>
   </aside>
 </main>
